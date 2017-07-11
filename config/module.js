@@ -20,8 +20,8 @@ module.exports = function(config) {
 			modules: [
 				{
 					name: 'generic',
-					repo: 'https://github.com/anzerr/sig_m_generic.git',
-					commit: 'ac62ca8f3681d821ff5df63324fc69bbd56a8a6e'
+					repo: 'https://github.com/anzerr/Module_Generic.git',
+					commit: 'f94b686d2dc8779f365a8d35fed05e397ec071f8'
 				}
 			]
 		},
