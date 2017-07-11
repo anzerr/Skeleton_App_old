@@ -2,7 +2,7 @@
 
 module.exports = function(config) {
 	var out = [], load = {
-		worker: ['generic']
+		worker: ['generic', 'worker']
 	};
 
 	load = ($.defined(config.moduleLoadOverload))? config.moduleLoadOverload : load[config.moduleProfile || config.appProfile];
