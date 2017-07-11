@@ -5,6 +5,7 @@ module.exports = function(config) {
     config.path = {
 		'node': '',
 		'root': appRoot.engine,
+		'project': appRoot.project,
 		'config': appRoot.project + '/config.js',
 		'engine': appRoot.engine + '/engine',
 		'base': appRoot.engine + '/engine/base',
