@@ -22,6 +22,7 @@ module.exports = function(config) {
 	create('warn', {color: 'yellow', log: true});
 	create('log', {});
 	create('info', {color: 'blue'});
+	create('docker', {color: 'blue'});
 	create('debug', {color: 'cyan', display: config.debug, log: false, level: 3});
 
 	return ({

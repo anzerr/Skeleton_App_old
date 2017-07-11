@@ -1,22 +1,27 @@
 "use strict";
 
 module.exports = function(config) {
-	var load = {
-		worker: ['base']
+	var out = [], load = {
+		worker: ['generic']
 	};
 
 	load = ($.defined(config.moduleLoadOverload))? config.moduleLoadOverload : load[config.moduleProfile || config.appProfile];
+	for (var i in load) {
+		if (load[i]) {
+			out.push(load[i]);
+		}
+	}
 
 	return ({
 		repository: {
 			server: {
-				url: 'https://repo.domain.com' // tmp
+				url: '' // tmp
 			},
 			modules: [
 				{
 					name: 'generic',
 					repo: 'https://github.com/anzerr/sig_m_generic.git',
-					commit: '6a727d907c4f780c7e3ae16036c54fbe471ebf87'
+					commit: 'ac62ca8f3681d821ff5df63324fc69bbd56a8a6e'
 				}
 			]
 		},

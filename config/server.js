@@ -21,7 +21,7 @@ module.exports = function(config) {
                 api: [
                     {
                         origin: ['localhost', '127.0.0.1', '0.0.0.0'], // '0.0.0.0' free all origin
-                        pathReg: '^\/api'
+                        pathReg: '^\/'
                     }, {
                         origin: ['api.localhost'],
                         pathReg: null
@@ -30,7 +30,7 @@ module.exports = function(config) {
                 cdn: [
                     {
                         origin: ['localhost', '127.0.0.1', '0.0.0.0'],  // '0.0.0.0' free all origin
-                        pathReg: '^\/cdn',
+                        pathReg: '^\/',
                         localPath: ''
                     }, {
                         origin: ['cdn.localhost'],
@@ -47,43 +47,13 @@ module.exports = function(config) {
             key: '',
             cert: '',
             ca: null,
-            ciphers: [
-                'ECDHE-RSA-AES128-GCM-SHA256',
-                'ECDHE-ECDSA-AES128-GCM-SHA256',
-                'ECDHE-RSA-AES256-GCM-SHA384',
-                'ECDHE-ECDSA-AES256-GCM-SHA384',
-                'DHE-RSA-AES128-GCM-SHA256',
-                'DHE-DSS-AES128-GCM-SHA256',
-                'kEDH+AESGCM',
-                'ECDHE-RSA-AES128-SHA256',
-                'ECDHE-ECDSA-AES128-SHA256',
-                'ECDHE-RSA-AES128-SHA',
-                'ECDHE-ECDSA-AES128-SHA',
-                'ECDHE-RSA-AES256-SHA384',
-                'ECDHE-ECDSA-AES256-SHA384',
-                'ECDHE-RSA-AES256-SHA',
-                'ECDHE-ECDSA-AES256-SHA',
-                'DHE-RSA-AES128-SHA256',
-                'DHE-RSA-AES128-SHA',
-                'DHE-DSS-AES128-SHA256',
-                'DHE-RSA-AES256-SHA256',
-                'DHE-DSS-AES256-SHA',
-                'DHE-RSA-AES256-SHA',
-                '!aNULL',
-                '!eNULL',
-                '!EXPORT',
-                '!DES',
-                '!RC4',
-                '!3DES',
-                '!MD5',
-                '!PSK'
-            ]
+            ciphers: []
 		},
 		socket: {
             masterKey: ''
 		},
-		webSocket: {
-			// config
+		ws: {
+            port: config.port + 100
 		}
 	});
 };

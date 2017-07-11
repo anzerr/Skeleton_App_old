@@ -3,17 +3,18 @@
 // basic config file
 module.exports = function(config) {
     config.path = {
+		'node': '',
 		'root': appRoot.engine,
 		'config': appRoot.project + '/config.js',
 		'engine': appRoot.engine + '/engine',
 		'base': appRoot.engine + '/engine/base',
 		'npm': appRoot.engine + '/engine/node_modules',
-		'node': '',
 		'core': appRoot.engine + '/engine/core',
 		'lib': appRoot.engine + '/engine/core/lib',
 		'docker': appRoot.engine + '/engine/core/docker',
 		'public': appRoot.project + '/public',
-		'hyperion': appRoot.engine + '/engine/core/docker/hyperion',
+		'hyperion': appRoot.engine + '/engine/core/hyperion',
+		'hypeConfig': appRoot.project + '/resources/cache/hyperion/config',
 		'bootstrap': appRoot.project + '/bootstrap',
 		'app': appRoot.project + '',
 		'resources': appRoot.project + '/resources',
@@ -25,7 +26,7 @@ module.exports = function(config) {
 
 	var fs = require('fs');
 	try {
-		config.session = fs.readFileSync(config.path.cache + '/.machineSession').toString();
+		config.session = fs.readFileSync(config.path.resources + '/.machineSession').toString();
 	} catch(e) {
 		// don't care, it gets created later if it doesn't exist
 	}
@@ -49,6 +50,7 @@ module.exports = function(config) {
 		// docker
 		dockerProfile: $.is.default(config.dockerProfile, 'worker'),
 		isLocal: $.is.default(config.isLocal, false),
+		hyperion: $.is.default(config.hyperion, {}),
 
         app: {
             version: pJson.version, // interaction . release . hotfix
@@ -84,7 +86,7 @@ module.exports = function(config) {
 		},
 		crypto: {
 			type: 'sha1', // what algo to use CHANGE TO SOMETHING BETTER :)
-            salt: '56sd4v14sd654-sha1', // app salt CHANGE ME PLEASE
+            salt: 'SALT', // app salt CHANGE ME PLEASE
             sub: 8 // hash the hash how many times
 		},
 		log: {
@@ -106,7 +108,11 @@ module.exports = function(config) {
         cdn: config.path.app + '/config/cdn.js',
 		console: config.path.app + '/config/console.js',
 		module: config.path.app + '/config/module.js',
-		package: config.path.app + '/config/package.js'
+		package: config.path.app + '/config/package.js',
+		closure: config.path.app + '/config/closure.js',
+		docker: config.path.app + '/config/docker.js',
+		mongo: config.path.app + '/config/mongo.js',
+		ca: config.path.app + '/config/ca.js'
     };
 	for (var i in loadConfig) {
 		base[i] = require(loadConfig[i])(config);
