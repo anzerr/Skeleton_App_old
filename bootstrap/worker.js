@@ -56,7 +56,7 @@ $.require([
 			part.response(this, m, req, res);
         });
 		part.cdn(m, http);
-		part.health(m, http);
+		//part.health(m, http); // static overload system used here
 
 		_s.webSocket.on('message', function(data) {
 			//console.log(data.url(), data.get());
